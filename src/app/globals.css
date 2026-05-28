@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #004a99; /* Deep Institutional Blue */
+  --secondary: #00a859; /* Municipal Green */
+  --accent: #fdb913; /* Golden Yellow */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #f8fafc;
+    --foreground: #1e293b;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  outline: none;
+}
+
+/* Custom Accessibility Focus */
+:focus-visible {
+  outline: 3px solid var(--accent) !important;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(253, 185, 19, 0.4);
+}
+
+/* Skeleton Animation */
+@keyframes skeleton-loading {
+  0% { background-color: #f1f5f9; }
+  50% { background-color: #e2e8f0; }
+  100% { background-color: #f1f5f9; }
+}
+
+.skeleton {
+  animation: skeleton-loading 1.5s infinite linear;
+}
+
+nav {
+  background: var(--primary);
+}
+
+.high-contrast {
+  --background: #000000 !important;
+  --foreground: #ffffff !important;
+  --primary: #ffff00 !important;
+  --secondary: #00ffff !important;
+  --accent: #ffffff !important;
+}
+
+.high-contrast body {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+.high-contrast * {
+  border-color: #ff0 !important;
+  background-color: #000 !important;
+  color: #fff !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.high-contrast a, .high-contrast button {
+  color: #fff !important;
+  text-decoration: underline !important;
+}
+
+.high-contrast .bg-white, 
+.high-contrast .bg-zinc-50, 
+.high-contrast .bg-zinc-100, 
+.high-contrast .bg-blue-50 {
+  background-color: #000 !important;
+}
+
+.high-contrast img, .high-contrast iframe {
+  filter: grayscale(100%) contrast(150%) !important;
+}
