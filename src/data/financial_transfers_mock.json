@@ -1,0 +1,42 @@
+[
+  {
+    "ibgeCode": "2408102",
+    "name": "Natal",
+    "fpm": "R$ 45.892.100,00",
+    "state": "R$ 28.450.300,00",
+    "federal": "R$ 112.780.400,00",
+    "period": "Janeiro 2026"
+  },
+  {
+    "ibgeCode": "2404505",
+    "name": "Guamaré",
+    "fpm": "R$ 8.920.450,00",
+    "state": "R$ 12.150.800,00",
+    "federal": "R$ 15.430.200,00",
+    "period": "Janeiro 2026"
+  },
+  {
+    "ibgeCode": "2408001",
+    "name": "Mossoró",
+    "fpm": "R$ 32.150.900,00",
+    "state": "R$ 21.340.500,00",
+    "federal": "R$ 84.560.100,00",
+    "period": "Janeiro 2026"
+  },
+  {
+    "ibgeCode": "2403259",
+    "name": "Parnamirim",
+    "fpm": "R$ 24.560.300,00",
+    "state": "R$ 15.670.200,00",
+    "federal": "R$ 62.340.800,00",
+    "period": "Janeiro 2026"
+  },
+  {
+    "ibgeCode": "2402004",
+    "name": "Caicó",
+    "fpm": "R$ 12.340.500,00",
+    "state": "R$ 8.450.200,00",
+    "federal": "R$ 28.560.400,00",
+    "period": "Janeiro 2026"
+  }
+]

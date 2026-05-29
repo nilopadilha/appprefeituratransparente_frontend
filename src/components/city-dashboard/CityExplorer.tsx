@@ -39,11 +39,22 @@ interface SocialData {
   source: string;
 }
 
+interface FinancialData {
+  fpm: string;
+  state: string;
+  federal: string;
+  period: string;
+  available: boolean;
+  message?: string;
+  isFallback?: boolean;
+}
+
 const CityExplorer = () => {
   const [selectedCity, setSelectedCity] = useState<City | null>(null);
   const [ibgeData, setIbgeData] = useState<IbgeData | null>(null);
   const [atriconData, setAtriconData] = useState<AtriconData | null>(null);
   const [socialData, setSocialData] = useState<SocialData | null>(null);
+  const [financialData, setFinancialData] = useState<FinancialData | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<'dashboard' | 'report'>('report');
@@ -55,17 +66,20 @@ const CityExplorer = () => {
     setIbgeData(null);
     setAtriconData(null);
     setSocialData(null);
+    setFinancialData(null);
 
     try {
-      const [ibgeRes, atriconRes, socialRes] = await Promise.all([
+      const [ibgeRes, atriconRes, socialRes, financialRes] = await Promise.all([
         fetch(`/api/city/${city.id}/ibge`),
         fetch(`/api/city/${city.id}/atricon`),
-        fetch(`/api/city/${city.id}/social`)
+        fetch(`/api/city/${city.id}/social`),
+        fetch(`/api/city/${city.id}/financial`)
       ]);
 
       if (ibgeRes.ok) setIbgeData(await ibgeRes.json());
       if (atriconRes.ok) setAtriconData(await atriconRes.json());
       if (socialRes.ok) setSocialData(await socialRes.json());
+      if (financialRes.ok) setFinancialData(await financialRes.json());
 
     } catch (err) {
       console.error("Error loading dashboard data:", err);
@@ -292,6 +306,71 @@ const CityExplorer = () => {
                 </div>
                 <div className="mt-4 flex items-center gap-2 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">
                   <Info size={12} /> Fonte: {socialData?.source || 'MDS / Portal da Transparência'}
+                </div>
+              </div>
+
+              {/* Financial Transfers Section (New) */}
+              <div className="p-8 border-t border-zinc-100 bg-zinc-50/30">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-green-50 text-green-600 rounded-lg">
+                      <TrendingUp size={20} />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-black text-zinc-800 uppercase tracking-tighter">Recursos e Repasses Financeiros</h3>
+                      <p className="text-[10px] text-zinc-400 font-black uppercase tracking-widest">{financialData?.period || 'Ciclo Atual'}</p>
+                    </div>
+                  </div>
+                  {financialData?.isFallback && (
+                    <div className="bg-yellow-50 text-yellow-700 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest border border-yellow-100 animate-pulse">
+                      Valores Estimados
+                    </div>
+                  )}
+                </div>
+
+                {financialData?.available ? (
+                  <div className="space-y-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      <div className="bg-white p-6 rounded-2xl border border-zinc-100 shadow-sm hover:shadow-md transition-all">
+                        <p className="text-[10px] font-black text-zinc-400 uppercase tracking-widest mb-1">FPM (Constitucional)</p>
+                        <p className="text-xl font-black text-zinc-800">{financialData.fpm}</p>
+                        <div className="mt-3 flex items-center gap-2 text-[9px] font-bold text-green-600 uppercase">
+                          <AlertCircle size={10} /> Repasse Obrigatório
+                        </div>
+                      </div>
+                      <div className="bg-white p-6 rounded-2xl border border-zinc-100 shadow-sm hover:shadow-md transition-all">
+                        <p className="text-[10px] font-black text-zinc-400 uppercase tracking-widest mb-1">Recursos Estaduais</p>
+                        <p className="text-xl font-black text-zinc-800">{financialData.state}</p>
+                        <div className="mt-3 flex items-center gap-2 text-[9px] font-bold text-blue-600 uppercase">
+                          <AlertCircle size={10} /> ICMS / IPVA / Convênios
+                        </div>
+                      </div>
+                      <div className="bg-white p-6 rounded-2xl border border-zinc-100 shadow-sm hover:shadow-md transition-all">
+                        <p className="text-[10px] font-black text-zinc-400 uppercase tracking-widest mb-1">Repasses Federais</p>
+                        <p className="text-xl font-black text-zinc-800">{financialData.federal}</p>
+                        <div className="mt-3 flex items-center gap-2 text-[9px] font-bold text-[var(--primary)] uppercase">
+                          <AlertCircle size={10} /> Transferências da União
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-zinc-900 p-4 rounded-xl flex items-center justify-between text-white">
+                       <span className="text-[10px] font-black uppercase tracking-widest opacity-60">Total de Repasses Identificados</span>
+                       <span className="font-black text-lg text-yellow-400">
+                          {financialData.fpm !== 'Consulte o Portal do Tesouro' ? 'Consulte o Relatório Detalhado' : 'Aguardando Sincronização'}
+                       </span>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="py-12 bg-white rounded-3xl border-2 border-dashed border-zinc-100 flex flex-col items-center justify-center text-center px-6">
+                    <Info className="text-zinc-200 mb-4" size={48} />
+                    <p className="text-zinc-500 font-medium max-w-sm">
+                      {financialData?.message || 'Os dados financeiros detalhados para esta região ainda não foram integrados ao portal.'}
+                    </p>
+                  </div>
+                )}
+
+                <div className="mt-6 flex items-center gap-2 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">
+                  <Info size={12} /> Fonte: Tesouro Transparente / TCE-RN / Portal da Transparência Federal
                 </div>
               </div>
               

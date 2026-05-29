@@ -17,11 +17,20 @@ export async function GET(
 
   try {
     const impactRes = await fetch(impactUrl);
-    const impactJson = await impactRes.json();
     
     let impactPercentage = "N/A";
-    if (Array.isArray(impactJson) && impactJson.length > 1) {
-      impactPercentage = impactJson[1].V + "%";
+    
+    if (impactRes.ok) {
+      const contentType = impactRes.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        const impactJson = await impactRes.json();
+        if (Array.isArray(impactJson) && impactJson.length > 1) {
+          impactPercentage = impactJson[1].V + "%";
+        }
+      } else {
+        const textError = await impactRes.text();
+        console.warn(`SIDRA Social API returned text instead of JSON for ${ibgeCode}:`, textError);
+      }
     }
 
     // 2. Complement with detailed mock data if available

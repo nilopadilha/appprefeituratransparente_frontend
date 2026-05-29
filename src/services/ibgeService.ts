@@ -29,12 +29,20 @@ export const fetchCityData = async (ibgeCode: string): Promise<IbgeData> => {
       fetch(gdpUrl)
     ]);
 
-    if (!popRes.ok || !gdpRes.ok) {
-      throw new Error(`IBGE API returned status: Pop:${popRes.status} GDP:${gdpRes.status}`);
+    let popJson: any = [];
+    let gdpJson: any = [];
+
+    if (popRes.ok && popRes.headers.get("content-type")?.includes("application/json")) {
+      popJson = await popRes.json();
+    } else {
+      console.warn(`SIDRA Pop API for ${ibgeCode} returned non-JSON:`, await popRes.text());
     }
 
-    const popJson = await popRes.json();
-    const gdpJson = await gdpRes.json();
+    if (gdpRes.ok && gdpRes.headers.get("content-type")?.includes("application/json")) {
+      gdpJson = await gdpRes.json();
+    } else {
+      console.warn(`SIDRA GDP API for ${ibgeCode} returned non-JSON:`, await gdpRes.text());
+    }
 
     // Data parsing logic
     let population = "N/A";
