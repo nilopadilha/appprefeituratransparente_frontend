@@ -1,0 +1,31 @@
+[
+  {
+    "ibgeCode": "2408102",
+    "name": "Natal",
+    "programs": [
+      { "name": "Bolsa Família", "beneficiaries": 54231, "value": "R$ 36.879.122,00", "status": "Ativo" },
+      { "name": "Auxílio Gás", "beneficiaries": 12540, "value": "R$ 1.279.080,00", "status": "Ativo" },
+      { "name": "BPC (Idoso/PCD)", "beneficiaries": 8920, "value": "R$ 12.595.040,00", "status": "Ativo" }
+    ],
+    "impact": "24.5%"
+  },
+  {
+    "ibgeCode": "2404505",
+    "name": "Guamaré",
+    "programs": [
+      { "name": "Bolsa Família", "beneficiaries": 2840, "value": "R$ 1.931.200,00", "status": "Ativo" },
+      { "name": "BPC (Idoso/PCD)", "beneficiaries": 450, "value": "R$ 635.400,00", "status": "Ativo" }
+    ],
+    "impact": "18.2%"
+  },
+  {
+    "ibgeCode": "3304557",
+    "name": "Rio de Janeiro",
+    "programs": [
+      { "name": "Bolsa Família", "beneficiaries": 482100, "value": "R$ 327.828.000,00", "status": "Ativo" },
+      { "name": "Auxílio Gás", "beneficiaries": 115000, "value": "R$ 11.730.000,00", "status": "Ativo" },
+      { "name": "BPC (Idoso/PCD)", "beneficiaries": 98400, "value": "R$ 138.940.800,00", "status": "Ativo" }
+    ],
+    "impact": "15.8%"
+  }
+]

@@ -45,12 +45,12 @@ const Home = () => {
   return (
     <div className="flex flex-col bg-zinc-50 items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
       <Navbar />
-      <main id="main-content" className="flex flex-col gap-[64px] mt-8 w-full max-w-7xl px-4 mb-20">
+      <main id="main-content" className="flex flex-col gap-8 md:gap-16 mt-8 w-full max-w-7xl px-4 mb-20">
         
         {/* Hero Section: Dynamic Service Focus */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Banner */}
-          <div className="lg:col-span-2 relative h-[500px] group overflow-hidden rounded-[40px] shadow-2xl">
+          <div className="lg:col-span-2 relative h-[350px] md:h-[500px] group overflow-hidden rounded-[32px] md:rounded-[40px] shadow-2xl">
             <Image 
               src="/bignews.png" 
               alt="Destaque" 
@@ -59,16 +59,16 @@ const Home = () => {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 800px"
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10" />
-            <div className="absolute bottom-0 left-0 p-10 z-20 text-white max-w-2xl">
-              <span className="bg-[var(--accent)] text-black px-4 py-1.5 rounded-full text-xs font-black mb-4 inline-block uppercase tracking-widest shadow-lg">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent z-10" />
+            <div className="absolute bottom-0 left-0 p-6 md:p-10 z-20 text-white max-w-2xl">
+              <span className="bg-[var(--accent)] text-black px-3 py-1 md:px-4 md:py-1.5 rounded-full text-[10px] md:text-xs font-black mb-3 md:mb-4 inline-block uppercase tracking-widest shadow-lg">
                 Portal do Contribuinte
               </span>
-              <h1 className="text-4xl font-black leading-tight mb-4 group-hover:text-[var(--accent)] transition-colors cursor-pointer">
+              <h1 className="text-2xl md:text-4xl font-black leading-tight mb-3 md:mb-4 group-hover:text-[var(--accent)] transition-colors cursor-pointer">
                 Pague seu IPTU 2026 com desconto de até 20% em cota única
               </h1>
-              <p className="text-zinc-300 font-medium mb-6 line-clamp-2">Aproveite as condições especiais e ajude no desenvolvimento do nosso município. O prazo encerra em 30 de Junho.</p>
-              <button className="bg-white text-[var(--primary)] px-8 py-3 rounded-2xl font-black hover:bg-[var(--accent)] hover:text-black transition-all flex items-center gap-3 shadow-xl">
+              <p className="text-zinc-300 text-sm md:text-base font-medium mb-4 md:mb-6 line-clamp-2">Aproveite as condições especiais e ajude no desenvolvimento do nosso município. O prazo encerra em 30 de Junho.</p>
+              <button className="bg-white text-[var(--primary)] px-6 py-2.5 md:px-8 md:py-3 rounded-xl md:rounded-2xl font-black text-sm md:text-base hover:bg-[var(--accent)] hover:text-black transition-all flex items-center gap-3 shadow-xl">
                 GERAR BOLETO AGORA
                 <ChevronRight size={18} />
               </button>
@@ -76,7 +76,7 @@ const Home = () => {
           </div>
 
           {/* News Sidebar */}
-          <div className="flex flex-col bg-white rounded-[40px] border border-zinc-100 overflow-hidden shadow-sm">
+          <div className="flex flex-col bg-white rounded-[32px] md:rounded-[40px] border border-zinc-100 overflow-hidden shadow-sm">
             <div className="bg-white p-6 border-b border-zinc-100">
               <h2 className="text-zinc-800 font-black flex items-center gap-2 uppercase tracking-tighter text-xl">
                 Últimas Notícias
@@ -119,23 +119,23 @@ const Home = () => {
         </div>
 
         {/* Video Section: Canal do Município */}
-        <div className="w-full bg-[var(--primary)] rounded-[40px] p-10 flex flex-col lg:flex-row gap-12 items-center shadow-2xl relative overflow-hidden">
+        <div className="w-full bg-[var(--primary)] rounded-[32px] md:rounded-[40px] p-6 md:p-12 flex flex-col lg:flex-row gap-8 lg:gap-12 items-center shadow-2xl relative overflow-hidden text-center lg:text-left">
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32 blur-3xl" />
-          <div className="flex-1 relative z-10 text-center lg:text-left">
-            <span className="text-[var(--accent)] text-xs font-black uppercase tracking-[0.3em] mb-4 block">Fique por dentro</span>
-            <h2 className="text-4xl font-black text-white mb-6 uppercase tracking-tighter">TV Portal Municipal</h2>
-            <p className="text-blue-100 mb-8 text-xl font-medium leading-relaxed">Acompanhe ao vivo as coletivas, inaugurações e a prestação de contas da nossa gestão municipal.</p>
+          <div className="flex-1 relative z-10">
+            <span className="text-[var(--accent)] text-[10px] md:text-xs font-black uppercase tracking-[0.3em] mb-4 block">Fique por dentro</span>
+            <h2 className="text-2xl md:text-4xl font-black text-white mb-4 md:mb-6 uppercase tracking-tighter">TV Portal Municipal</h2>
+            <p className="text-blue-100 mb-6 md:mb-8 text-lg md:text-xl font-medium leading-relaxed max-w-xl mx-auto lg:mx-0">Acompanhe ao vivo as coletivas, inaugurações e a prestação de contas da nossa gestão municipal.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <button className="bg-[var(--accent)] text-black px-10 py-4 rounded-2xl font-black hover:scale-105 transition-all flex items-center justify-center gap-3 shadow-xl">
+                <button className="bg-[var(--accent)] text-black px-8 md:px-10 py-3.5 md:py-4 rounded-xl md:rounded-2xl font-black hover:scale-105 transition-all flex items-center justify-center gap-3 shadow-xl text-sm md:text-base">
                   ASSISTIR AO VIVO
                   <PlayCircle size={20} />
                 </button>
-                <button className="bg-white/10 text-white border border-white/20 px-10 py-4 rounded-2xl font-black hover:bg-white/20 transition-all flex items-center justify-center gap-2">
+                <button className="bg-white/10 text-white border border-white/20 px-8 md:px-10 py-3.5 md:py-4 rounded-xl md:rounded-2xl font-black hover:bg-white/20 transition-all flex items-center justify-center gap-2 text-sm md:text-base">
                   VER ARQUIVO
                 </button>
             </div>
           </div>
-          <div className="w-full lg:w-[500px] aspect-video rounded-3xl overflow-hidden shadow-2xl ring-8 ring-white/10 relative group">
+          <div className="w-full lg:w-[480px] xl:w-[500px] aspect-video rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl ring-4 md:ring-8 ring-white/10 relative group flex-shrink-0">
             <iframe
               width="100%"
               height="100%"

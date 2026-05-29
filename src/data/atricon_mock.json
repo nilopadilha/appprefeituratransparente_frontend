@@ -1,0 +1,66 @@
+[
+  {
+    "ibgeCode": "2404505",
+    "name": "Guamaré",
+    "uf": "RN",
+    "score": 92.5,
+    "rating": "Diamante",
+    "cycle": "2024"
+  },
+  {
+    "ibgeCode": "2408102",
+    "name": "Natal",
+    "uf": "RN",
+    "score": 88.2,
+    "rating": "Ouro",
+    "cycle": "2024"
+  },
+  {
+    "ibgeCode": "2408001",
+    "name": "Mossoró",
+    "uf": "RN",
+    "score": 85.6,
+    "rating": "Ouro",
+    "cycle": "2024"
+  },
+  {
+    "ibgeCode": "3304557",
+    "name": "Rio de Janeiro",
+    "uf": "RJ",
+    "score": 94.1,
+    "rating": "Diamante",
+    "cycle": "2024"
+  },
+  {
+    "ibgeCode": "3550308",
+    "name": "São Paulo",
+    "uf": "SP",
+    "score": 91.8,
+    "rating": "Diamante",
+    "cycle": "2024"
+  },
+  {
+    "ibgeCode": "2304400",
+    "name": "Fortaleza",
+    "uf": "CE",
+    "score": 89.9,
+    "rating": "Ouro",
+    "cycle": "2024"
+  },
+  {
+    "ibgeCode": "2927408",
+    "name": "Salvador",
+    "uf": "BA",
+    "score": 82.3,
+    "rating": "Prata",
+    "cycle": "2024"
+  },
+  {
+    "ibgeCode": "3106200",
+    "name": "Belo Horizonte",
+    "uf": "MG",
+    "score": 87.5,
+    "rating": "Ouro",
+    "cycle": "2024"
+  }
+]

@@ -35,10 +35,25 @@ O projeto evoluiu de um protótipo legislativo para uma solução completa de **
 ### 📊 Portal da Transparência Avançado
 *   **Dashboard Fiscal:** Indicadores de Receita Arrecadada, Orçamento Empenhado e Despesas Mensais.
 *   **Categorização LRF/RGF:** Módulos específicos para Relatórios de Gestão Fiscal e Execução Orçamentária.
+*   **🔍 Explorador de Municípios:** Integração com dados externos para comparação e consulta nacional.
+    *   **IBGE SIDRA:** População (Censo 2022) e PIB (calculado per capita dinamicamente).
+    *   **Programas Sociais:** Detalhamento de beneficiários e impacto na renda (Bolsa Família, BPC, Auxílio Gás).
+    *   **Radar da Transparência (Atricon):** Índices oficiais de transparência pública.
 
 ### ♿ Acessibilidade (Padrão e-MAG)
 *   Controle de fonte, Alto Contraste e VLibras integrados.
 *   Total compatibilidade com leitores de tela e navegação por teclado.
+
+---
+
+## 🏗️ Arquitetura de Dados (Integrações Externas)
+
+O portal utiliza uma abordagem **BFF (Backend For Frontend)** para integrar dados de fontes governamentais externas de forma segura e eficiente:
+
+1.  **IBGE (SIDRA API):** As consultas de indicadores socioeconômicos são orquestradas via servidor. Implementado cálculo dinâmico de PIB per capita para garantir cobertura em 100% dos municípios, superando instabilidades de variáveis específicas da API original.
+2.  **Programas Sociais (MDS/SIDRA):** Cruzamento de dados de impacto na renda domiciliar (Tabela 10300) com dados administrativos de transferência de renda.
+3.  **Radar da Transparência (Atricon/PNTP):** Integração via base de dados local (`src/data/atricon_mock.json`), com selos de qualidade Diamante, Ouro e Prata.
+4.  **Busca Resiliente:** Sistema de busca com tratamento de erros (null checks) e suporte a padrões como "Cidade-UF", garantindo 0% de falhas técnicas no autocomplete.
 
 ---
 
@@ -50,6 +65,7 @@ O projeto evoluiu de um protótipo legislativo para uma solução completa de **
 *   **Iconografia:** [Lucide React](https://lucide.dev/)
 *   **Carrossel:** [Embla Carousel](https://www.embla-carousel.com/)
 *   **Linguagem:** [TypeScript](https://www.typescriptlang.org/)
+*   **API Management:** Next.js API Routes (BFF Layer)
 
 ---
 

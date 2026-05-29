@@ -18,9 +18,9 @@ const Footer: React.FC = () => {
     };
 
     return (
-      <footer className="w-full mt-auto bg-gray-100 py-12 border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-12">
-          <div className='flex flex-col text-zinc-500 text-sm/6 min-w-[150px]'>
+      <footer className="w-full mt-auto bg-gray-100 py-12 md:py-16 border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-10 md:gap-12">
+          <div className='flex flex-col text-zinc-500 text-sm/6'>
             <h4 className='text-zinc-600 font-bold text-xs uppercase tracking-[0.2em] mb-4'>PREFEITURA</h4>
             <Link href="/institucional/estrutura" className="hover:text-[var(--primary)] transition-colors py-1">Gabinete do Prefeito</Link>
             <Link href="/institucional/estrutura" className="hover:text-[var(--primary)] transition-colors py-1">Secretarias Municipais</Link>
@@ -28,14 +28,14 @@ const Footer: React.FC = () => {
             <Link href="/institucional/historia" className="hover:text-[var(--primary)] transition-colors py-1">Galeria de Gestores</Link>
           </div>
 
-          <div className='flex flex-col text-zinc-500 text-sm/6 min-w-[150px]'>
+          <div className='flex flex-col text-zinc-500 text-sm/6'>
             <h4 className='text-zinc-600 font-bold text-xs uppercase tracking-[0.2em] mb-4'>PUBLICAÇÕES</h4>
             <Link href="/" className="hover:text-[var(--primary)] transition-colors py-1">Diário Oficial</Link>
             <Link href="/" className="hover:text-[var(--primary)] transition-colors py-1">Leis e Decretos</Link>
             <Link href="/transparencia" className="hover:text-[var(--primary)] transition-colors py-1">Licitações e Contratos</Link>
           </div>
 
-          <div className='flex flex-col text-zinc-500 text-sm/6 min-w-[150px]'>
+          <div className='flex flex-col text-zinc-500 text-sm/6 sm:col-span-2 lg:col-span-1'>
             <h4 className='text-zinc-600 font-bold text-xs uppercase tracking-[0.2em] mb-4'>CONTATO</h4>
             <div className="py-1">
                 <p className="font-bold text-zinc-700">Horário de Funcionamento:</p>
@@ -48,8 +48,8 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          <div className="lg:col-span-1 xl:col-span-3">
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-zinc-200">
+          <div className="sm:col-span-2 lg:col-span-1 xl:col-span-3">
+            <div className="bg-white p-6 md:p-8 rounded-[24px] md:rounded-2xl shadow-sm border border-zinc-200">
                 <h4 className='text-zinc-800 font-black text-sm uppercase tracking-tight mb-2'>Assine nosso informativo</h4>
                 <p className="text-zinc-500 text-xs mb-6 font-medium leading-relaxed">Fique por dentro das decisões e ações do seu município diretamente no seu e-mail.</p>
                 

@@ -43,30 +43,30 @@ const PublicationTabs = () => {
         ))}
       </div>
       
-      <div className="p-2">
+      <div className="p-2 md:p-4">
         {publicationData[activeTab].map((item, idx) => (
           <div 
             key={idx} 
-            className="p-4 hover:bg-zinc-50 rounded-2xl transition-all cursor-pointer group flex items-start justify-between gap-4 border-b border-zinc-50 last:border-0"
+            className="p-3 md:p-4 hover:bg-zinc-50 rounded-2xl transition-all cursor-pointer group flex items-start justify-between gap-4 border-b border-zinc-50 last:border-0"
           >
-            <div className="flex gap-4 items-start">
-              <div className="p-3 bg-blue-50 text-[var(--primary)] rounded-xl group-hover:bg-[var(--primary)] group-hover:text-white transition-colors">
-                <FileText size={20} />
+            <div className="flex gap-3 md:gap-4 items-start flex-1 min-w-0">
+              <div className="p-2 md:p-3 bg-blue-50 text-[var(--primary)] rounded-xl group-hover:bg-[var(--primary)] group-hover:text-white transition-colors flex-shrink-0">
+                <FileText className="w-5 h-5 md:w-6 md:h-6" />
               </div>
-              <div>
-                <h4 className="font-bold text-zinc-800 text-sm group-hover:text-[var(--primary)] transition-colors">{item.title}</h4>
+              <div className="min-w-0">
+                <h4 className="font-bold text-zinc-800 text-sm group-hover:text-[var(--primary)] transition-colors truncate">{item.title}</h4>
                 <p className="text-xs text-zinc-500 line-clamp-1 mt-1 font-medium">{item.desc}</p>
                 <div className="flex items-center gap-2 mt-2 text-[10px] font-bold text-zinc-400 uppercase tracking-wider">
                   <Calendar size={12} />
-                  <span>Publicado em {item.date}</span>
+                  <span>{item.date}</span>
                 </div>
               </div>
             </div>
-            <div className="opacity-0 group-hover:opacity-100 transition-opacity flex gap-2">
-               <button className="p-2 bg-white shadow-sm border border-zinc-100 rounded-lg text-zinc-400 hover:text-[var(--primary)]" title="Visualizar">
+            <div className="flex md:opacity-0 group-hover:opacity-100 transition-opacity gap-1.5 flex-shrink-0">
+               <button className="p-1.5 md:p-2 bg-white shadow-sm border border-zinc-100 rounded-lg text-zinc-400 hover:text-[var(--primary)]" title="Visualizar">
                  <ChevronRight size={16} />
                </button>
-               <button className="p-2 bg-white shadow-sm border border-zinc-100 rounded-lg text-zinc-400 hover:text-[var(--secondary)]" title="Baixar PDF">
+               <button className="p-1.5 md:p-2 bg-white shadow-sm border border-zinc-100 rounded-lg text-zinc-400 hover:text-[var(--secondary)]" title="Baixar PDF">
                  <Download size={16} />
                </button>
             </div>

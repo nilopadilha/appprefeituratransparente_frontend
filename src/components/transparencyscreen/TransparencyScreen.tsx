@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Navbar from '../navbar/Navbar';
 import { Download, ExternalLink, Search, Filter, FileText, ChevronRight, TrendingUp, TrendingDown, DollarSign, Calendar } from 'lucide-react';
 import Footer from '../footer/Footer';
+import CityExplorer from '../city-dashboard/CityExplorer';
 
 const functions = [
     {
@@ -91,60 +92,60 @@ const TransparencyScreen = () => {
         </div>
       </div>
 
-      <main id="main-content" className="flex-1 w-full max-w-5xl mx-auto px-4 py-12">
+      <main id="main-content" className="flex-1 w-full max-w-5xl mx-auto px-4 py-8 md:py-12">
         {/* Dashboard Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-zinc-100">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12">
+            <div className="bg-white p-5 md:p-6 rounded-2xl shadow-sm border border-zinc-100">
                 <div className="flex justify-between items-start mb-4">
                     <div className="p-2 bg-green-50 text-green-600 rounded-lg">
                         <TrendingUp size={24} />
                     </div>
                     <span className="text-[10px] font-bold text-green-600 bg-green-50 px-2 py-1 rounded">+12% vs 2024</span>
                 </div>
-                <h4 className="text-zinc-500 text-xs font-bold uppercase tracking-wider">Receita Arrecadada</h4>
-                <p className="text-2xl font-black text-zinc-800 mt-1">R$ 14.2M</p>
+                <h4 className="text-zinc-500 text-[10px] md:text-xs font-bold uppercase tracking-wider">Receita Arrecadada</h4>
+                <p className="text-xl md:text-2xl font-black text-zinc-800 mt-1">R$ 14.2M</p>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-zinc-100">
+            <div className="bg-white p-5 md:p-6 rounded-2xl shadow-sm border border-zinc-100">
                 <div className="flex justify-between items-start mb-4">
                     <div className="p-2 bg-blue-50 text-[var(--primary)] rounded-lg">
                         <DollarSign size={24} />
                     </div>
                     <span className="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">85% Empenhado</span>
                 </div>
-                <h4 className="text-zinc-500 text-xs font-bold uppercase tracking-wider">Orçamento Total</h4>
-                <p className="text-2xl font-black text-zinc-800 mt-1">R$ 28.5M</p>
+                <h4 className="text-zinc-500 text-[10px] md:text-xs font-bold uppercase tracking-wider">Orçamento Total</h4>
+                <p className="text-xl md:text-2xl font-black text-zinc-800 mt-1">R$ 28.5M</p>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-zinc-100">
+            <div className="bg-white p-5 md:p-6 rounded-2xl shadow-sm border border-zinc-100 sm:col-span-2 md:col-span-1">
                 <div className="flex justify-between items-start mb-4">
                     <div className="p-2 bg-red-50 text-red-600 rounded-lg">
                         <TrendingDown size={24} />
                     </div>
                     <span className="text-[10px] font-bold text-red-600 bg-red-50 px-2 py-1 rounded">-5% vs Jan</span>
                 </div>
-                <h4 className="text-zinc-500 text-xs font-bold uppercase tracking-wider">Despesas Mensais</h4>
-                <p className="text-2xl font-black text-zinc-800 mt-1">R$ 2.1M</p>
+                <h4 className="text-zinc-500 text-[10px] md:text-xs font-bold uppercase tracking-wider">Despesas Mensais</h4>
+                <p className="text-xl md:text-2xl font-black text-zinc-800 mt-1">R$ 2.1M</p>
             </div>
         </div>
 
         {/* Controls Section */}
-        <div className="flex flex-col md:flex-row gap-4 mb-8">
+        <div className="flex flex-col md:flex-row gap-3 md:gap-4 mb-8">
             <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" size={20} />
                 <input 
                     type="text" 
-                    placeholder="O que você procura? (ex: licitações, salários...)"
-                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-zinc-200 bg-white focus:ring-2 focus:ring-[var(--primary)] outline-none transition-all shadow-sm"
+                    placeholder="O que você procura? (ex: licitações...)"
+                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-zinc-200 bg-white focus:ring-2 focus:ring-[var(--primary)] outline-none transition-all shadow-sm text-sm"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
             </div>
-            <div className="flex gap-2">
-                <div className="flex items-center gap-2 bg-white border border-zinc-200 rounded-xl px-3 shadow-sm">
+            <div className="flex flex-row gap-2">
+                <div className="flex-1 flex items-center gap-2 bg-white border border-zinc-200 rounded-xl px-3 shadow-sm">
                     <Filter size={18} className="text-zinc-400" />
                     <select 
-                        className="py-3 pr-8 bg-transparent outline-none text-zinc-600 font-medium cursor-pointer"
+                        className="w-full py-3 pr-2 bg-transparent outline-none text-zinc-600 font-medium cursor-pointer text-xs md:text-sm"
                         value={filterCategory}
                         onChange={(e) => setFilterCategory(e.target.value)}
                     >
@@ -153,10 +154,10 @@ const TransparencyScreen = () => {
                         ))}
                     </select>
                 </div>
-                <div className="flex items-center gap-2 bg-white border border-zinc-200 rounded-xl px-3 shadow-sm">
+                <div className="flex-1 flex items-center gap-2 bg-white border border-zinc-200 rounded-xl px-3 shadow-sm">
                     <Calendar size={18} className="text-zinc-400" />
                     <select 
-                        className="py-3 pr-8 bg-transparent outline-none text-zinc-600 font-medium cursor-pointer"
+                        className="w-full py-3 pr-2 bg-transparent outline-none text-zinc-600 font-medium cursor-pointer text-xs md:text-sm"
                         value={filterYear}
                         onChange={(e) => setFilterYear(e.target.value)}
                     >
@@ -169,7 +170,7 @@ const TransparencyScreen = () => {
         </div>
 
         {/* Content List */}
-        <div className="grid gap-4">
+        <div className="grid gap-3 md:gap-4">
             {filteredFunctions.length > 0 ? (
                 filteredFunctions.map((fn, index) => {
                     const isDropdown = fn.type === 'dropdown';
@@ -179,26 +180,26 @@ const TransparencyScreen = () => {
                         <div key={index} className="bg-white rounded-xl border border-zinc-200 shadow-sm overflow-hidden transition-all hover:border-[var(--primary)]">
                             <button
                                 onClick={() => isDropdown ? toggleDropdown(fn.name) : (fn.type === 'redirect' ? window.open(fn.content as string, '_blank') : null)}
-                                className={`w-full flex justify-between items-center p-5 text-left transition-colors ${isOpen ? 'bg-zinc-50' : ''}`}
+                                className={`w-full flex justify-between items-center p-4 md:p-5 text-left transition-colors ${isOpen ? 'bg-zinc-50' : ''}`}
                             >
-                                <div className="flex items-center gap-4">
-                                    <div className="p-3 bg-blue-50 text-[var(--primary)] rounded-lg">
-                                        <FileText size={24} />
+                                <div className="flex items-center gap-3 md:gap-4 flex-1 min-w-0">
+                                    <div className="p-2 md:p-3 bg-blue-50 text-[var(--primary)] rounded-lg flex-shrink-0">
+                                        <FileText className="w-5 h-5 md:w-6 md:h-6" />
                                     </div>
-                                    <div>
-                                        <div className="flex items-center gap-2 mb-0.5">
-                                            <span className="text-[10px] font-bold text-[var(--primary)] uppercase tracking-widest">{fn.category}</span>
+                                    <div className="min-w-0">
+                                        <div className="flex flex-wrap items-center gap-2 mb-0.5">
+                                            <span className="text-[9px] md:text-[10px] font-bold text-[var(--primary)] uppercase tracking-widest">{fn.category}</span>
                                             {fn.type === 'download' && (
-                                                <span className="text-[9px] font-bold bg-zinc-100 text-zinc-500 px-1.5 py-0.5 rounded uppercase">{fn.format} • {fn.size}</span>
+                                                <span className="text-[8px] md:text-[9px] font-bold bg-zinc-100 text-zinc-500 px-1.5 py-0.5 rounded uppercase">{fn.format} • {fn.size}</span>
                                             )}
                                         </div>
-                                        <h3 className="text-lg font-bold text-zinc-800 uppercase leading-tight">{fn.name}</h3>
+                                        <h3 className="text-sm md:text-lg font-bold text-zinc-800 uppercase leading-tight truncate">{fn.name}</h3>
                                     </div>
                                 </div>
                                 {isDropdown ? (
-                                    <ChevronRight className={`transition-transform duration-300 ${isOpen ? 'rotate-90' : ''}`} />
+                                    <ChevronRight className={`flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-90' : ''}`} />
                                 ) : (
-                                    fn.type === 'download' ? <Download className="text-zinc-400" /> : <ExternalLink className="text-zinc-400" />
+                                    fn.type === 'download' ? <Download size={18} className="text-zinc-400 flex-shrink-0" /> : <ExternalLink size={18} className="text-zinc-400 flex-shrink-0" />
                                 )}
                             </button>
 
@@ -208,14 +209,14 @@ const TransparencyScreen = () => {
                                         <a
                                             key={i}
                                             href="#"
-                                            className="flex justify-between items-center px-8 py-4 border-b border-zinc-100 last:border-0 hover:bg-white transition-colors group"
+                                            className="flex justify-between items-center px-6 md:px-8 py-3 md:py-4 border-b border-zinc-100 last:border-0 hover:bg-white transition-colors group"
                                         >
-                                            <div className="flex flex-col">
-                                                <span className="text-zinc-600 font-medium group-hover:text-[var(--primary)]">{item.label}</span>
-                                                <span className="text-[10px] text-zinc-400 font-bold uppercase">{item.format} • {item.size}</span>
+                                            <div className="flex flex-col min-w-0">
+                                                <span className="text-sm md:text-base text-zinc-600 font-medium group-hover:text-[var(--primary)] truncate">{item.label}</span>
+                                                <span className="text-[9px] md:text-[10px] text-zinc-400 font-bold uppercase">{item.format} • {item.size}</span>
                                             </div>
-                                            <div className="flex items-center gap-2 text-[var(--primary)] opacity-0 group-hover:opacity-100 transition-opacity">
-                                                <span className="text-xs font-bold">BAIXAR</span>
+                                            <div className="flex items-center gap-2 text-[var(--primary)] md:opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
+                                                <span className="text-[10px] md:text-xs font-bold">BAIXAR</span>
                                                 <Download size={14} />
                                             </div>
                                         </a>
@@ -230,6 +231,11 @@ const TransparencyScreen = () => {
                     <p className="text-zinc-400 font-medium">Nenhum resultado encontrado para sua busca.</p>
                 </div>
             )}
+        </div>
+
+        {/* City Explorer Section */}
+        <div className="mt-20 pt-16 border-t border-zinc-100">
+            <CityExplorer />
         </div>
       </main>
 
