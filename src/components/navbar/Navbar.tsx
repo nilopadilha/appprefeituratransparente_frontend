@@ -213,7 +213,7 @@ const Navbar: React.FC = () => {
                           className="flex items-center gap-3 xs:gap-4 p-3 xs:p-4 bg-zinc-50 rounded-xl xs:rounded-2xl hover:bg-blue-50 transition-colors group"
                         >
                           <div className="p-1.5 xs:p-2 bg-white rounded-lg xs:rounded-xl shadow-sm text-[var(--primary)] group-hover:bg-[var(--primary)] group-hover:text-white transition-colors">
-                            {React.cloneElement(item.icon as React.ReactElement, { size: 14 })}
+                            {React.cloneElement(item.icon as React.ReactElement<any>, { size: 14 })}
                           </div>
                           <span className="font-bold text-zinc-700 text-sm">{item.name}</span>
                         </Link>
